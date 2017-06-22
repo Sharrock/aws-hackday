@@ -1,0 +1,3 @@
+{  
+  "/quote/:id/bind": "/policy/:id"
+}

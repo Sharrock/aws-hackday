@@ -1,0 +1,137 @@
+{
+  "quote": [
+    {
+      "id": 1,
+      "insuredName": "Jo Blogs",
+      "insuredMobile": "0400 111 111",
+      "insuredEmail": "joblogs@iag.com.au",
+      "insuredDOB": "01/01/1980",
+      "insuredSex": "Male",
+      "policyEffectiveStartDateTime": "26/06/2017 09:00",
+      "policyEffectiveEndDateTime": "26/06/2017 18:00",
+      "policyCoverType": "HireCar",
+      "policyCoverTypeDetails": "Driving to the country for the day.",
+      "quoteNo": "HOUR00000001",
+      "quoteDate": "26/06/2017",
+      "quotePremium": "357.80",
+      "quoteExcess": "125.00",
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://127.0.0.1:3000/quote/1",
+          "type": "GET"
+        },
+        {
+          "rel": "next",
+          "href": "http://127.0.0.1:3000/quote/1/bind",
+          "type": "POST"
+        },
+        {
+          "rel": "previous",
+          "href": "http://127.0.0.1:3000/",
+          "type": "POST"
+        },
+        {
+          "rel": "cancel",
+          "href": "http://127.0.0.1:3000/quote/1/cancel",
+          "type": "POST"
+        }
+      ]
+    },
+    {
+      "insuredName": "Ian Berry",
+      "insuredMobile": "0404831900",
+      "insuredEmail": "ianberry@ianberryit.com.au",
+      "insuredDOB": "2010-01-04",
+      "insuredSex": "Male",
+      "policyEffectiveStartDateTime": "2017-06-22T01:01",
+      "policyEffectiveEndDateTime": "2017-06-23T01:01",
+      "policyCoverType": "Travel",
+      "policyCoverTypeDetails": "Test Cover",
+      "id": 2
+    },
+    {
+      "insuredName": "Test",
+      "insuredMobile": "0404831900",
+      "insuredEmail": "ianberry@ianberryit.com.au",
+      "insuredDOB": "2017-06-02",
+      "insuredSex": "Other",
+      "policyEffectiveStartDateTime": "2017-06-03T01:01",
+      "policyEffectiveEndDateTime": "2017-06-11T13:02",
+      "policyCoverType": "Travel",
+      "policyCoverTypeDetails": "Test",
+      "id": 3
+    },
+    {
+      "insuredName": "",
+      "insuredMobile": "",
+      "insuredEmail": "",
+      "insuredDOB": "",
+      "insuredSex": "Male",
+      "policyEffectiveStartDateTime": "",
+      "policyEffectiveEndDateTime": "",
+      "policyCoverType": "HireCar",
+      "policyCoverTypeDetails": "",
+      "id": 4
+    },
+    {
+      "insuredName": "",
+      "insuredMobile": "",
+      "insuredEmail": "",
+      "insuredDOB": "",
+      "insuredSex": "Male",
+      "policyEffectiveStartDateTime": "",
+      "policyEffectiveEndDateTime": "",
+      "policyCoverType": "HireCar",
+      "policyCoverTypeDetails": "test",
+      "id": 5
+    },
+    {
+      "insuredName": "",
+      "insuredMobile": "",
+      "insuredEmail": "",
+      "insuredDOB": "",
+      "insuredSex": "Male",
+      "policyEffectiveStartDateTime": "",
+      "policyEffectiveEndDateTime": "",
+      "policyCoverType": "HireCar",
+      "policyCoverTypeDetails": "",
+      "id": 6
+    }
+  ],
+  "policy": [
+    {
+      "id": 1,
+      "insuredName": "Jo Blogs",
+      "insuredMobile": "0400 111 111",
+      "insuredEmail": "joblogs@iag.com.au",
+      "insuredDOB": "01/01/1980",
+      "insuredSex": "Male",
+      "policyEffectiveStartDateTime": "26/06/2017 09:00",
+      "policyEffectiveEndDateTime": "26/06/2017 18:00",
+      "policyCoverType": "HireCar",
+      "policyCoverTypeDetails": "Driving to the country for the day.",
+      "policyNo": "HOUR00000001",
+      "policyPremium": "357.80",
+      "policyExcess": "125.00",
+      "policyMobilePIN": "1234",
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://127.0.0.1:3000/policy/1",
+          "type": "GET"
+        },
+        {
+          "rel": "previous",
+          "href": "http://127.0.0.1:3000/",
+          "type": "POST"
+        },
+        {
+          "rel": "cancel",
+          "href": "http://127.0.0.1:3000/policy/1/cancel",
+          "type": "POST"
+        }
+      ]
+    }
+  ]
+}

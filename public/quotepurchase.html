@@ -1,0 +1,173 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>IAG hOUR Insurance</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <h1>IAG hOUR Insurance</h1>
+        <h3>Policy Details</h3>
+
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1 boldText">
+					Name
+				</div>
+				<div class="col-md-9" id="insuredName">
+					&nbsp;
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1 boldText">
+					Mobile Number
+				</div>
+				<div class="col-md-9" id="insuredMobile">
+					&nbsp;&nbsp;
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1 boldText">
+                    Email
+                </div>
+                <div class="col-md-9" id="insuredEmail">
+                    &nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1 boldText">
+                    Date Of Birth
+                </div>
+                <div class="col-md-9" id="insuredDOB">
+                    &nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1 boldText">
+                    Insured Sex
+                </div>
+                <div class="col-md-9" id="insuredSex">
+                    &nbsp;&nbsp;
+                </div>
+            </div>
+
+
+            <div class="row">
+				<div class="col-md-12">
+					&nbsp;
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1 boldText">
+					Policy #
+				</div>
+				<div class="col-md-9" id="policyNo">
+					&nbsp;
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1 boldText">
+					Policy Cover Period
+				</div>
+				<div class="col-md-9" id="policyEffectiveDate">
+					&nbsp;
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1 boldText">
+                    Policy Cover Details
+                </div>
+                <div class="col-md-9" id="policyCover">
+                    &nbsp;
+                </div>
+            </div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1 boldText">
+					Policy Premium
+				</div>
+				<div class="col-md-9" id="policyPremium">
+					&nbsp;
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1 boldText">
+					Policy Excess
+				</div>
+				<div class="col-md-9" id="policyExcess">
+					&nbsp;
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					&nbsp;
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1 boldText">
+					Mobile app PIN
+				</div>
+				<div class="col-md-9" id="policyMobilePIN">
+					&nbsp;
+				</div>
+			</div>
+
+
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+
+
+		<script>
+
+			var policyID = "";
+			$(document).ready(function(){
+				var serverGetURL = 'http://127.0.0.1:3000/policy/1';
+				$.ajax({
+				    url: serverGetURL,
+				    type: 'GET',
+				    contentType: 'application/json; charset=utf-8',
+				    dataType: 'json',
+				    success: function(data, status, xhr) {
+
+						policyID = data['id'];
+						$('#insuredName').text(data['insuredName']);
+						$('#insuredMobile').text(data['insuredMobile']);
+						$('#insuredEmail').text(data['insuredEmail']);
+                        $('#insuredDOB').text(data['insuredDOB']);
+                        $('#insuredSex').text(data['insuredSex']);
+
+						$('#policyNo').text(data['policyNo']);
+                        $('#policyEffectiveDate').text(data['policyEffectiveStartDateTime'] + " - " + data['policyEffectiveEndDateTime']);
+                        $('#policyCover').text(data['policyCoverType'] + " - " + data['policyCoverTypeDetails']);
+						$('#policyPremium').text(data['policyPremium']);
+						$('#policyExcess').text(data['policyExcess']);
+						$('#policyMobilePIN').text(data['policyMobilePIN']);
+
+				    }
+				}).error(function(jqXHR, status, exception) {
+					alert("Error: " + jqXHR.status + " " + exception);
+				});
+			});
+</script>
+
+    </body>
+</html>

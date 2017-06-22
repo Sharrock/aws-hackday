@@ -1,0 +1,188 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>IAG hOUR Insurance</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <h1>IAG hOUR Insurance</h1>
+        <p>hOUR insurance provides select cover for a short time-based period a tiny premium...</p>
+
+        <div class="row">
+            <div class="col-md-12 ">
+                &nbsp;
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                &nbsp;
+            </div>
+        </div>
+
+
+        <form id="hourInsuranceForm">
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1">
+					<label for="insuredName">Name</label>
+				</div>
+				<div class="col-md-9">
+					<input type="text" id="insuredName" name="insuredName" value="" onChange="" placeholder="enter your name..."/>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1">
+					<label for="insuredMobile">Mobile Number</label>
+				</div>
+				<div class="col-md-9">
+					<input type="tel" id="insuredMobile" name="insuredMobile" value="" onChange="" placeholder="enter your mobile..."/>
+				</div>
+				</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1">
+					<label for="insuredEmail">Email</label>
+				</div>
+				<div class="col-md-9">
+					<input type="email" id="insuredEmail" name="insuredEmail" value="" onChange="" placeholder="enter your email..."/>
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1">
+                    <label for="insuredDOB">Date Of Birth</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="date" id="insuredDOB" name="insuredDOB" value="" onChange="" placeholder="enter your date of birth..."/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1">
+                    <label for="insuredSexMale">Sex</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="radio" name="insuredSex" value="Male" id="insuredSexMale" checked> Male
+                    <input type="radio" name="insuredSex" value="Female" id="insuredSexFemale" > Female
+                    <input type="radio" name="insuredSex" value="Other" id="insuredSexOther" > Other
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1">
+                    <label for="policyEffectiveStartDateTime">Cover Start Date & Time</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="datetime-local" id="policyEffectiveStartDateTime" name="policyEffectiveStartDateTime" value="" onChange="" placeholder="enter cover start date & time..."/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1">
+                    <label for="policyEffectiveEndDateTime">Cover End Date & Time</label>
+                </div>
+                <div class="col-md-9">
+                    <input type="datetime-local" id="policyEffectiveEndDateTime" name="policyEffectiveEndDateTime" value="" onChange="" placeholder="enter cover end date & time..."/>
+                </div>
+            </div>
+
+            <div class="row">
+				<div class="col-md-2 col-md-offset-1">
+					<label for="policyCoverType">Cover Type</label>
+				</div>
+				<div class="col-md-9">
+                    <select name="policyCoverType" id="policyCoverType">
+                        <option value="HireCar">Hire Car</option>
+                        <option value="SportExercise">Sport or Exercise</option>
+                        <option value="SmallPortables">Small Portables</option>
+                        <option value="ProfessionalIndemnity">Professional Indemnity</option>
+                        <option value="Defamation">Defamation</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Unicorn">Unicorn Wrestling</option>
+                    </select>
+				</div>
+			</div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-1">
+                    &nbsp;
+                </div>
+                <div class="col-md-9">
+                    <textarea rows="4" cols="50" id="policyCoverTypeDetails" name="policyCoverTypeDetails" placeholder="enter cover details"></textarea>
+                </div>
+            </div>
+
+
+
+			<div class="row">
+				<div class="col-md-12">
+					&nbsp;
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2 col-md-offset-1">
+					<button type="submit">Get Quote</button>
+				</div>
+			</div>
+		</form>
+
+
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+		<script>
+			function processForm(e) {
+				if (e.preventDefault) e.preventDefault();
+
+				var serverPostURL = 'http://127.0.0.1:3000/quote';
+				var data = { insuredName: $('#insuredName').val(),
+							 insuredMobile: $('#insuredMobile').val(),
+							 insuredEmail: $('#insuredEmail').val(),
+                             insuredDOB: $('#insuredDOB').val(),
+                             insuredSex: $("input:radio[name='insuredSex']:checked").val(),
+                             policyEffectiveStartDateTime: $('#policyEffectiveStartDateTime').val(),
+                             policyEffectiveEndDateTime: $('#policyEffectiveEndDateTime').val(),
+                             policyCoverType: $('#policyCoverType').val(),
+                             policyCoverTypeDetails: $('#policyCoverTypeDetails').val()
+				};
+				$.ajax({
+				    url: serverPostURL,
+				    type: 'POST',
+				    data: JSON.stringify(data),
+				    contentType: 'application/json; charset=utf-8',
+				    dataType: 'json',
+				    success: function(msg) {
+				        window.location.href= "/quotesummary.html"
+				    },
+					error: function(jqXHR, exception) {
+						alert("Error: " + jqXHR.status + " " + exception);
+					}
+				});
+
+				return false;
+			}
+
+			var form = document.getElementById('hourInsuranceForm');
+			if (form.attachEvent) {
+				form.attachEvent("submit", processForm);
+			} else {
+				form.addEventListener("submit", processForm);
+			}
+</script>
+
+
+    </body>
+</html>
