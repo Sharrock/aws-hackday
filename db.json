@@ -37,66 +37,6 @@
           "type": "POST"
         }
       ]
-    },
-    {
-      "insuredName": "Ian Berry",
-      "insuredMobile": "0404831900",
-      "insuredEmail": "ianberry@ianberryit.com.au",
-      "insuredDOB": "2010-01-04",
-      "insuredSex": "Male",
-      "policyEffectiveStartDateTime": "2017-06-22T01:01",
-      "policyEffectiveEndDateTime": "2017-06-23T01:01",
-      "policyCoverType": "Travel",
-      "policyCoverTypeDetails": "Test Cover",
-      "id": 2
-    },
-    {
-      "insuredName": "Test",
-      "insuredMobile": "0404831900",
-      "insuredEmail": "ianberry@ianberryit.com.au",
-      "insuredDOB": "2017-06-02",
-      "insuredSex": "Other",
-      "policyEffectiveStartDateTime": "2017-06-03T01:01",
-      "policyEffectiveEndDateTime": "2017-06-11T13:02",
-      "policyCoverType": "Travel",
-      "policyCoverTypeDetails": "Test",
-      "id": 3
-    },
-    {
-      "insuredName": "",
-      "insuredMobile": "",
-      "insuredEmail": "",
-      "insuredDOB": "",
-      "insuredSex": "Male",
-      "policyEffectiveStartDateTime": "",
-      "policyEffectiveEndDateTime": "",
-      "policyCoverType": "HireCar",
-      "policyCoverTypeDetails": "",
-      "id": 4
-    },
-    {
-      "insuredName": "",
-      "insuredMobile": "",
-      "insuredEmail": "",
-      "insuredDOB": "",
-      "insuredSex": "Male",
-      "policyEffectiveStartDateTime": "",
-      "policyEffectiveEndDateTime": "",
-      "policyCoverType": "HireCar",
-      "policyCoverTypeDetails": "test",
-      "id": 5
-    },
-    {
-      "insuredName": "",
-      "insuredMobile": "",
-      "insuredEmail": "",
-      "insuredDOB": "",
-      "insuredSex": "Male",
-      "policyEffectiveStartDateTime": "",
-      "policyEffectiveEndDateTime": "",
-      "policyCoverType": "HireCar",
-      "policyCoverTypeDetails": "",
-      "id": 6
     }
   ],
   "policy": [
