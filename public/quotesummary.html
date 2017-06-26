@@ -163,8 +163,8 @@
 
 			$(document).ready(function(){
 				var loc = window.location.toString();
-				var quoteId = loc.substring(loc.indexOf("=")+1);
-				var serverGetURL = 'https://dkzkpo2vrh.execute-api.ap-southeast-2.amazonaws.com/prod/quote/' + quoteId;
+				quoteID = loc.substring(loc.indexOf("=")+1);
+				var serverGetURL = 'https://dkzkpo2vrh.execute-api.ap-southeast-2.amazonaws.com/prod/quote/' + quoteID;
 				$.ajax({
 				    url: serverGetURL,
 				    type: 'GET',
@@ -186,9 +186,9 @@
                         $('#quotePremium').text(data['quotePremium']);
 						$('#quoteExcess').text(data['quoteExcess']);
 
-						var serverPostURLObject = data['links'].find(function(x) { return x.rel === 'next';});
+						/**var serverPostURLObject = data['links'].find(function(x) { return x.rel === 'next';});
 						serverURL = serverPostURLObject.href;
-						serverMethod = serverPostURLObject.type;
+						serverMethod = serverPostURLObject.type; **/
 				    }
 				}).error(function(jqXHR, status, exception) {
 					alert("Error: " + jqXHR.status + " " + exception);
@@ -198,7 +198,7 @@
 			function processForm(e) {
 				if (e.preventDefault) e.preventDefault();
 
-				window.location.href= "/quotepurchase.html?quoteId=" + quoteId;
+				window.location.href= "/quotepurchase.html?quoteId=" + quoteID;
 				/*
 				var data = { id: quoteID};
 				$.ajax({
