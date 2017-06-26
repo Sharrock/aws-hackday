@@ -157,7 +157,7 @@
 
 
 		<script>
-			var serverURL = "https://dkzkpo2vrh.execute-api.ap-southeast-2.amazonaws.com/prod/quote/";
+			var serverURL = "";
 			var serverMethod = "";
 			var quoteID = "";
 
@@ -179,12 +179,12 @@
                         $('#insuredDOB').text(data['insuredDOB']);
                         $('#insuredSex').text(data['insuredSex']);
 
-						$('#quoteNo').text(data['quoteNo']);
-						$('#quoteDate').text(data['quoteDate']);
+						$('#quoteNo').text(data['policyNo']);
+						$('#quoteDate').text(data['policyDate']);
                         $('#policyEffectiveDate').text(data['policyEffectiveStartDateTime'] + " - " + data['policyEffectiveEndDateTime']);
                         $('#policyCover').text(data['policyCoverType'] + " - " + data['policyCoverTypeDetails']);
-                        $('#quotePremium').text(data['quotePremium']);
-						$('#quoteExcess').text(data['quoteExcess']);
+                        $('#quotePremium').text(data['policyPremium']);
+						$('#quoteExcess').text(data['policyExcess']);
 
 						/**var serverPostURLObject = data['links'].find(function(x) { return x.rel === 'next';});
 						serverURL = serverPostURLObject.href;
@@ -197,23 +197,25 @@
 
 			function processForm(e) {
 				if (e.preventDefault) e.preventDefault();
-				
+
+				window.location.href= "/quotepurchase.html?quoteId=" + quoteID;
+
 				var data = { id: quoteID};
 				$.ajax({
 				    url: serverURL,
-				    type: 'POST',
+				    type: serverMethod,
 				    data: JSON.stringify(data),
 				    contentType: 'application/json; charset=utf-8',
 				    dataType: 'json',
 				    async: false,
 				    success: function(msg) {
-				        window.location.href= "/quotepurchase.html?quoteId=" + quoteID;
+				        window.location.href= "/quotepurchase.html"
 				    },
 					error: function(jqXHR, exception) {
 						alert("Error: " + jqXHR.status + " " + exception);
 					}
 				});
-				
+				*/
 
 				return false;
 			}
