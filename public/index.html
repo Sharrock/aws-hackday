@@ -147,7 +147,9 @@
 			function processForm(e) {
 				if (e.preventDefault) e.preventDefault();
 
-				var serverPostURL = 'http://127.0.0.1:3000/quote';
+                // TODO:
+				var serverPostURL = 'https://dkzkpo2vrh.execute-api.ap-southeast-2.amazonaws.com/prod/quote';
+
 				var data = { insuredName: $('#insuredName').val(),
 							 insuredMobile: $('#insuredMobile').val(),
 							 insuredEmail: $('#insuredEmail').val(),
@@ -164,8 +166,8 @@
 				    data: JSON.stringify(data),
 				    contentType: 'application/json; charset=utf-8',
 				    dataType: 'json',
-				    success: function(msg) {
-				        window.location.href= "/quotesummary.html"
+				    success: function(msg) {                   
+				        window.location.href= "/quotesummary.html?quoteId=1"
 				    },
 					error: function(jqXHR, exception) {
 						alert("Error: " + jqXHR.status + " " + exception);
