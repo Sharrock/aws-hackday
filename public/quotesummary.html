@@ -179,12 +179,12 @@
                         $('#insuredDOB').text(data['insuredDOB']);
                         $('#insuredSex').text(data['insuredSex']);
 
-						$('#quoteNo').text(data['quoteNo']);
-						$('#quoteDate').text(data['quoteDate']);
+						$('#quoteNo').text(data['policyNo']);
+						$('#quoteDate').text(data['policyDate']);
                         $('#policyEffectiveDate').text(data['policyEffectiveStartDateTime'] + " - " + data['policyEffectiveEndDateTime']);
                         $('#policyCover').text(data['policyCoverType'] + " - " + data['policyCoverTypeDetails']);
-                        $('#quotePremium').text(data['quotePremium']);
-						$('#quoteExcess').text(data['quoteExcess']);
+                        $('#quotePremium').text(data['policyPremium']);
+						$('#quoteExcess').text(data['policyExcess']);
 
 						/**var serverPostURLObject = data['links'].find(function(x) { return x.rel === 'next';});
 						serverURL = serverPostURLObject.href;
@@ -200,7 +200,7 @@
 				
 				var data = { id: quoteID};
 				$.ajax({
-				    url: serverURL,
+				    url: serverURL + quoteID,
 				    type: 'POST',
 				    data: JSON.stringify(data),
 				    contentType: 'application/json; charset=utf-8',
