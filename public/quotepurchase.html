@@ -140,7 +140,9 @@
 
 			var policyID = "";
 			$(document).ready(function(){
-				var serverGetURL = 'http://127.0.0.1:3000/policy/1';
+				var loc = window.location.toString();
+				var quoteId = loc.substring(loc.indexOf("=")+1);
+				var serverGetURL = 'https://dkzkpo2vrh.execute-api.ap-southeast-2.amazonaws.com/prod/quote/' + quoteId;
 				$.ajax({
 				    url: serverGetURL,
 				    type: 'GET',
