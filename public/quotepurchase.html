@@ -160,8 +160,8 @@
 						$('#policyNo').text(data['policyNo']);
                         $('#policyEffectiveDate').text(data['policyEffectiveStartDateTime'] + " - " + data['policyEffectiveEndDateTime']);
                         $('#policyCover').text(data['policyCoverType'] + " - " + data['policyCoverTypeDetails']);
-						$('#policyPremium').text(data['policyPremium']);
-						$('#policyExcess').text(data['policyExcess']);
+						$('#policyPremium').text('$ ' + data['policyPremium']);
+						$('#policyExcess').text('$' + data['policyExcess']);
 						$('#policyMobilePIN').text(data['policyMobilePIN']);
 
 				    }

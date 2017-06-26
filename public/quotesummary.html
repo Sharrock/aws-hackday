@@ -183,8 +183,8 @@
 						$('#quoteDate').text(data['policyDate']);
                         $('#policyEffectiveDate').text(data['policyEffectiveStartDateTime'] + " - " + data['policyEffectiveEndDateTime']);
                         $('#policyCover').text(data['policyCoverType'] + " - " + data['policyCoverTypeDetails']);
-                        $('#quotePremium').text(data['policyPremium']);
-						$('#quoteExcess').text(data['policyExcess']);
+                        $('#quotePremium').text('$ ' + data['policyPremium']);
+						$('#quoteExcess').text('$ ' + data['policyExcess']);
 
 						/**var serverPostURLObject = data['links'].find(function(x) { return x.rel === 'next';});
 						serverURL = serverPostURLObject.href;
