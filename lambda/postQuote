@@ -1,0 +1,65 @@
+console.log('starting function')
+const AWS = require('aws-sdk');
+const docClient = new AWS.DynamoDB.DocumentClient({region:'ap-southeast-2'});
+
+exports.handler = function(event, context, callback) {
+  console.log('*************processing event: %j', event)
+
+  var json = event["body-json"];
+  var nowId = Date.now();
+  json.id = nowId;
+  json.policyNo = "hOUR" + nowId;
+  json.policyDate = "" + today();
+
+  //RAE goes here
+  let min = 1000;
+  let max = 100000;
+  json.quote1 = (Math.floor(Math.random() * (max - min + 1)) + min)/100;
+  json.quote2 = json.quote1 * 1.1
+  json.quote3 = json.quote1 * 1.2
+  json.policyPremium = "" + json.quote1;
+
+  json.policyExcess = "500";
+  json.policyMobilePIN = "" + nowId;
+
+  console.log('*************processing json: %j', json)
+  var params = {
+    Item: json,
+    TableName: "HackPolicies"
+  };
+
+  docClient.put(params, function(err, json) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, {id: nowId });
+    }
+  });
+
+    function today(){
+        var myDate = new Date();
+
+        var month=new Array();
+        month[0]="Jan";
+        month[1]="Feb";
+        month[2]="Mar";
+        month[3]="Apr";
+        month[4]="May";
+        month[5]="Jun";
+        month[6]="Jul";
+        month[7]="Aug";
+        month[8]="Sep";
+        month[9]="Oct";
+        month[10]="Nov";
+        month[11]="Dec";
+        var hours = myDate.getHours();
+        var minutes = myDate.getMinutes();
+        var ampm = hours >= 12 ? 'pm' : 'am';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ampm;
+        // e.g. "13 Nov 2016 11:00pm";
+        return (myDate.getDate()+" "+month[myDate.getMonth()]+" "+myDate.getFullYear()+" "+strTime);
+    }
+}

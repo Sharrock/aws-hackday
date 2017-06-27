@@ -1,0 +1,126 @@
+var AWS = require("aws-sdk");
+
+var docClient = new AWS.DynamoDB.DocumentClient()
+
+exports.handler = function(event, context, callback) {
+
+    var tableName = "HackPolicies";
+
+    var keyId = event.id;
+    console.log(keyId);
+
+
+    var params = {
+        TableName : tableName,
+        Key:{
+            "id": keyId,
+        },
+        UpdateExpression: "set policyStatus = :s",
+        ExpressionAttributeValues:{
+            ":s": "Live"
+        },
+        ReturnValues:"UPDATED_NEW"
+    };
+
+    console.log("Updating Status...");
+
+    docClient.update(params, function(err, data){
+        if (err) {
+            console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
+        } else {
+
+            console.log("Update succeeded.",JSON.stringify(data, null, 2));
+            //var newData = getPolicy(keyId);
+            //console.log("newData is: ",JSON.stringify(newData, null, 2));
+            //console.log("About to call email function with: " + newData.insuredEmail);
+            sendEmail("damian.sharrock@iag.com.au", "Congratulations on your policy purchase!", keyId);
+            callback(null,{id: keyId});
+        }
+    });
+
+    function sendEmail(emailAddy, json, keyId){
+        'use strict'
+        console.log('Loading function');
+
+
+        var aws = require('aws-sdk');
+        var ses = new aws.SES({
+          region: 'us-east-1' //change
+        });
+
+        {
+
+        console.log("emailAddy is: " + emailAddy);
+        console.log("Adding a new item...");
+
+       var eParams = {
+           Destination: {
+               ToAddresses: ["" + emailAddy]
+           },
+           Message: {
+               Body: {
+                   Text: {
+                       Data: JSON.stringify(json)
+
+                   }
+               },
+               Subject: {
+                   Data: "Policy purchased for: HOUR" + keyId
+               }
+           },
+           Source: "damian.sharrock@iag.com.au"
+
+       };
+
+
+       console.log('===SENDING EMAIL=== with eparams\n ' + JSON.stringify(json, null, 2));
+       var email = ses.sendEmail(eParams, function(err, data){
+           if(err) console.log(err);
+           else {
+               console.log("===EMAIL SENT===");
+               console.log(data);
+               context.succeed(event);
+           }
+       });
+       console.log("EMAIL CODE END");
+       console.log('EMAIL: ', email);
+
+        }
+    }
+
+    function getPolicy(id, callback) {
+
+        var tableName = "HackPolicies";
+
+        var keyId = id;
+        console.log("getting on id: " + keyId);
+
+
+        var params = {
+            TableName : tableName,
+            KeyConditionExpression: "#id = :id",
+            ExpressionAttributeNames:{
+                "#id": "id"
+            },
+            ExpressionAttributeValues: {
+                ":id":keyId
+            }
+        };
+
+        console.log("Params for getPolicy call: " + JSON.stringify(params));
+
+
+        docClient.query(params, function(err, data) {
+            if (err) {
+                console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
+            } else {
+                console.log("Query succeeded.");
+                data.Items.forEach(function(item) {
+                    console.log(" -", item.Id + ": " + item.insuredName);
+                    callback(null,item);
+                });
+            }
+        });
+
+    }
+}

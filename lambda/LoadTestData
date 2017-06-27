@@ -1,0 +1,83 @@
+
+
+console.log('Loading function');
+var doc = require('dynamodb-doc');
+var db = new doc.DynamoDB();
+var AWS = require('aws-sdk');
+var docClient = new AWS.DynamoDB.DocumentClient();
+var fun = function(event, context)
+{
+  var params = {
+    RequestItems: {
+      "HackPolicies": [
+        {
+          PutRequest: {
+            Item: {
+                "id": 1,
+                "insuredName": "Test Name1",
+                "insuredMobile": "0400 111 111",
+                "insuredEmail": "test1@iag.com.au",
+                "insuredDOB": "01/01/1980",
+                "insuredSex": "Male",
+                "policyEffectiveStartDateTime": "26/06/2017 09:00",
+                "policyEffectiveEndDateTime": "26/06/2017 18:00",
+                "policyCoverType": "HireCar",
+                "policyCoverTypeDetails": "Driving to the country for the day.",
+                "policyNo": "HOUR00000001",
+                "policyPremium": "357.80",
+                "policyExcess": "125.00",
+                "policyMobilePIN": "1234"
+            }
+          }
+        },
+        {
+          PutRequest: {
+            Item: {
+                "id": 2,
+                "insuredName": "Test Name2",
+                "insuredMobile": "0400 222 222",
+                "insuredEmail": "test2@iag.com.au",
+                "insuredDOB": "01/01/1980",
+                "insuredSex": "Female",
+                "policyEffectiveStartDateTime": "26/06/2017 09:00",
+                "policyEffectiveEndDateTime": "26/06/2017 18:00",
+                "policyCoverType": "HireCar",
+                "policyCoverTypeDetails": "Driving to the country for the day.",
+                "policyNo": "HOUR00000002",
+                "policyPremium": "123.00",
+                "policyExcess": "500.00",
+                "policyMobilePIN": "0002"
+            }
+          }
+        },
+        {
+          PutRequest: {
+            Item: {
+                "id": 3,
+                "insuredName": "Test Name3",
+                "insuredMobile": "0400 333 333",
+                "insuredEmail": "test2@iag.com.au",
+                "insuredDOB": "01/01/1980",
+                "insuredSex": "Female",
+                "policyEffectiveStartDateTime": "26/06/2017 09:00",
+                "policyEffectiveEndDateTime": "26/06/2017 18:00",
+                "policyCoverType": "HireCar",
+                "policyCoverTypeDetails": "Driving to the country for the day.",
+                "policyNo": "HOUR00000003",
+                "policyPremium": "123.00",
+                "policyExcess": "500.00",
+                "policyMobilePIN": "0003"
+            }
+          }
+        }
+       ]
+    }
+  }
+
+
+  docClient.batchWrite(params,function(err,data){
+    if (err) console.log(err);
+    else console.log(data);
+  });
+};
+exports.handler = fun;
