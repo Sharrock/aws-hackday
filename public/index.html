@@ -170,7 +170,7 @@
 				    contentType: 'application/json; charset=utf-8',
 				    dataType: 'json',
 				    success: function(msg) {
-				        window.location.href= "./quotesummary.html?quoteId=" + msg.id;
+				        window.location.href= "quotesummary.html?quoteId=" + msg.id;
 				    },
 					error: function(jqXHR, exception) {
 						alert("Error: " + jqXHR.status + " " + exception);
