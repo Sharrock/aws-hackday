@@ -1,0 +1,116 @@
+'use strict'
+
+const tableName = "HackPolicies";
+
+var AWS = require("aws-sdk");
+
+var docClient = new AWS.DynamoDB.DocumentClient()
+
+exports.handler = function(event, context, callback) {
+
+    var keyId = event.id;
+
+    var params = {
+        TableName : tableName,
+        Key:{
+            "id": keyId,
+        },
+        UpdateExpression: "set policyStatus = :s",
+        ExpressionAttributeValues:{
+            ":s": "Live"
+        },
+        ReturnValues:"UPDATED_NEW"
+    };
+
+    let queryParams = {
+        TableName : tableName,
+        KeyConditionExpression: "#id = :id",
+        ExpressionAttributeNames:{
+            "#id": "id"
+        },
+        ExpressionAttributeValues: {
+            ":id":keyId
+        }
+    };
+
+    console.log("Updating Status...");
+
+    docClient.update(params, function(err, data){
+        if (err) {
+            console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
+        } else {
+            console.log("Update succeeded.",JSON.stringify(data, null, 2));
+
+            docClient.query(queryParams, function(err, data) {
+                if (err) {
+                    console.log("Unable to query. Error:", JSON.stringify(err, null, 2));
+                } else {
+                    console.log("Query succeeded.");
+                    data.Items.forEach(function(item) {
+                        console.log(" ******** Item=", JSON.stringify(item, null, 2));
+                        sendEmail(item, keyId);
+                        callback(null,JSON.stringify(item, null, 2));
+                    });
+                }
+            });
+
+
+            callback(null,{id: keyId});
+        }
+    });
+
+    function sendEmail(json, keyId){
+        console.log('Loading function');
+
+        var aws = require('aws-sdk');
+        var ses = new aws.SES({
+          region: 'us-east-1' //change
+        });
+
+        console.log("Adding a new item...");
+
+        var eParams = {
+           Destination: {
+               ToAddresses: ["" + json.insuredEmail]
+           },
+           Message: {
+               Body: {
+                   Text: {
+                       Data: buildEmailBody(json)
+                   }
+               },
+               Subject: {
+                   Data: "Policy purchased for Policy: HOUR" + keyId
+               }
+           },
+           Source: "damian.sharrock@iag.com.au"
+        };
+
+        console.log('===SENDING EMAIL=== with eparams\n ' + JSON.stringify(json, null, 2));
+        var email = ses.sendEmail(eParams, function(err, data){
+           if(err) console.log(err);
+           else {
+               console.log("===EMAIL SENT===");
+               console.log(data);
+               context.succeed(event);
+           }
+        });
+        console.log('EMAIL: ', email);
+    }
+
+    function buildEmailBody(json) {
+        let body = "Dear " + json.insuredName + ",\n\n";
+        body = body + "Thank you for choosing hOUR Insurance.\n Please refer the attached of your policy details below:\n\n";
+        body = body + "Your Policy Number: " + json.policyNo;
+        body = body + "\nCover Type: " + json.policyCoverType;
+        body = body + "\nStart Date: " + json.policyEffectiveStartDateTime;
+        body = body + "\nEnd Date: " + json.policyEffectiveEndDateTime;
+        body = body + "\nPremium: $ " + json.policyPremium;
+        body = body + "\nExcess: $ " + json.policyExcess;
+        body = body + "\nMobie PIN: " + json.policyMobilePIN;
+        body = body + "\n\n Click on the link to review your policy "
+        body = body + "\nhttp://team-e-hackday.s3-website-ap-southeast-2.amazonaws.com/quotepurchase.html?quoteId=" + json.id;
+
+        return body;
+    }
+}
