@@ -135,20 +135,52 @@
 				</div>
 			</div>
 
-		<form id="hourInsuranceForm">
-			<div class="row">
-				<div class="col-md-12">
-					&nbsp;
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-2 col-md-offset-1">
-					<button type="submit">Purchase</button>
-				</div>
-			</div>
-		</form>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+                <h2> Basic </h2>
+            </div>
+            <div class="col-md-2 col-md-offset-2">
+                <h2> Standard </h2>
+            </div>
+            <div class="col-md-2 col-md-offset-3">
+                <h2> Ultimate </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1" id="quote1">
+                $500
+            </div>
+            <div class="col-md-2 col-md-offset-1" id="quote2">
+                $600
+            </div>
+            <div class="col-md-2 col-md-offset-1" id="quote3">
+                $750
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1 boldText">
+                &nbsp;
+            </div>
+         </div>
 
+        <div class="row">
+            <div class="col-md-2 col-md-offset-1">
+                <form id="form1">
+                    <button type="submit">Purchase</button>
+                </form>
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                <form id="form1">
+                    <button type="submit">Purchase</button>
+                </form>
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                <form id="form1">
+                    <button type="submit">Purchase</button>
+                </form>
+            </div>
+        </div>
 
 
 
@@ -160,7 +192,8 @@
 
 
 		<script>
-			var serverURL = "https://dkzkpo2vrh.execute-api.ap-southeast-2.amazonaws.com/prod/quote/";
+			//var serverURL = "https://dkzkpo2vrh.execute-api.ap-southeast-2.amazonaws.com/prod/quote/";
+			var serverURL = "http://localhost:63342/aws-hackday/public/";
 			var serverMethod = "";
 			var quoteID = "";
 
@@ -188,6 +221,9 @@
                         $('#policyCover').text(data['policyCoverType'] + " - " + data['policyCoverTypeDetails']);
                         $('#quotePremium').text('$ ' + data['policyPremium']);
 						$('#quoteExcess').text('$ ' + data['policyExcess']);
+						$('#quote1').text('$ ' + data['quote1']);
+						$('#quote2').text('$ ' + data['quote2']);
+						$('#quote3').text('$ ' + data['quote3']);
 
 						/**var serverPostURLObject = data['links'].find(function(x) { return x.rel === 'next';});
 						serverURL = serverPostURLObject.href;

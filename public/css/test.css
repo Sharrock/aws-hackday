@@ -53,10 +53,16 @@ label {
     cursor: default;
 }
 .col-md-offset-1 {
-    margin-left: 8.33333333%;
+    margin-left: 8%;
+}
+.col-md-offset-2 {
+    margin-left: 8%;
+}
+.col-md-offset-3 {
+    margin-left: 8%;
 }
 .col-md-2 {
-    width: 16.66666667%;
+    width: 16%;
 }
 .btn-group-vertical>.btn-group:after, .btn-toolbar:after, .clearfix:after, .container-fluid:after, .container:after, .dl-horizontal dd:after, .form-horizontal .form-group:after, .modal-footer:after, .modal-header:after, .nav:after, .navbar-collapse:after, .navbar-header:after, .navbar:after, .pager:after, .panel-body:after, .row:after {
     clear: both;
